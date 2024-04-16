@@ -4,6 +4,11 @@ function App() {
    const [render, setRender] = useState(true)
 
    //let r = render;
+  //  useEffect(()=>{
+  //   setInterval(() => {
+  //     setRender(r = !r)
+  //   }, 2000);
+  //  },[])
 
    useEffect(()=>{
     setTimeout(() => {
