@@ -1,36 +1,49 @@
-import { useEffect, useState } from 'react'
-import axios from 'axios'
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-function useTodos(){
+function useTodos(n) {
+  const [todos, setTodos] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    const [todos, setTodos] = useState([])
+  useEffect(() => {
+    setInterval(() => {
+      axios.get("https://sum-server.100xdevs.com/todos").then((res) => {
+        setTodos(res.data.todos);
+        setLoading(false);
+      });
+    },n*1000);
+    axios.get("https://sum-server.100xdevs.com/todos").then((res) => {
+      setTodos(res.data.todos);
+      setLoading(false);
+    });
+  }, []);
 
-    useEffect(() => {
-      axios.get("https://sum-server.100xdevs.com/todos")
-        .then(res => {
-          setTodos(res.data.todos);
-        })
-    }, [])
-
-    return todos;
+  return { todos, loading };
 }
 function DataFetchingHooks() {
+  const { todos, loading } = useTodos(5);
 
-    const todos = useTodos();
+  if (loading) {
+    return <div>loading...</div>;
+  }
 
   return (
     <>
-      {todos.map(todo => <Track todo={todo} />)}
+      {todos.map((todo) => (
+        <Track todo={todo} />
+      ))}
     </>
-  )
+  );
 }
 
 function Track({ todo }) {
-  return <div>
-    {todo.title}
-    <br />
-    {todo.description}
-  </div>
+  return (
+    <div>
+      {todo.title}
+      <br />
+      {todo.description}
+    </div>
+  );
 }
 
-export default DataFetchingHooks
+export default DataFetchingHooks;
