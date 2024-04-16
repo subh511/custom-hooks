@@ -1,15 +1,22 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
-function DataFetchingHooks() {
-  const [todos, setTodos] = useState([])
+function useTodos(){
 
-  useEffect(() => {
-    axios.get("https://sum-server.100xdevs.com/todos")
-      .then(res => {
-        setTodos(res.data.todos);
-      })
-  }, [])
+    const [todos, setTodos] = useState([])
+
+    useEffect(() => {
+      axios.get("https://sum-server.100xdevs.com/todos")
+        .then(res => {
+          setTodos(res.data.todos);
+        })
+    }, [])
+
+    return todos;
+}
+function DataFetchingHooks() {
+
+    const todos = useTodos();
 
   return (
     <>
