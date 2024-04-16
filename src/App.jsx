@@ -1,12 +1,14 @@
 //import { useEffect, useState } from "react";
-import Rendering from "./components/Rendering";
+import DataFetchingHooks from "./components/DataFetchingHooks";
+//import Rendering from "./components/Rendering";
 
 function App() {
 
 
   return (
     <div>
-    <Rendering/>
+    {/*<Rendering/>*/}
+    <DataFetchingHooks/>
     </div>
   );
 }
