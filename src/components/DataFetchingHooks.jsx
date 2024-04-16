@@ -6,17 +6,25 @@ function useTodos(n) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setInterval(() => {
+    //the value added to interval to stop the interval;
+   const value =  setInterval(() => {
       axios.get("https://sum-server.100xdevs.com/todos").then((res) => {
         setTodos(res.data.todos);
         setLoading(false);
       });
     },n*1000);
+
     axios.get("https://sum-server.100xdevs.com/todos").then((res) => {
       setTodos(res.data.todos);
       setLoading(false);
     });
-  }, []);
+
+    return ()=>{
+        clearInterval(value)
+        //above mentioned value is passed inside the clear interval
+        //and this return function is used to unmount/destroy the component
+    }
+  }, [n]);
 
   return { todos, loading };
 }
