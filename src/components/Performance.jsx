@@ -1,5 +1,17 @@
 //import React from 'react'
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+
+function useInterval(fn,timeout){
+
+    useEffect(()=>{
+        setInterval(()=>{
+            fn()
+        },timeout)
+    },[])
+
+}
+
 
 export default function Performance() {
 
