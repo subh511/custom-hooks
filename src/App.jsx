@@ -5,6 +5,8 @@
 //import Performance from "./components/Performance";
 //import Rendering from "./components/Rendering";
 
+import SearchBar from "./components/SearchBar";
+
 function App() {
 
 
@@ -15,6 +17,7 @@ function App() {
     {/*<HookTypes/>*/}
     {/*<MousePointer/>*/}
     {/*<Performance/>*/}
+    <SearchBar/>
     </div>
   );
 }

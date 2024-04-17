@@ -15,7 +15,7 @@ function useDebounce(value, delay){
     }, [value, delay]);
   
     return debouncedValue;
-  };
+  }
 export default function SearchBar() {
 
     const [inputValue, setInputValue] = useState('');
@@ -23,6 +23,8 @@ export default function SearchBar() {
 
   return (
     <div>
+    your debounced value is : {debouncedValue}
+    <br/>
       <input
         type="text"
         value={inputValue}
