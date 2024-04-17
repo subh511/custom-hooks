@@ -26,5 +26,5 @@ export default function MousePointer() {
   );
 }
 
-//homework calculate actual width and height of window;
+//homework calculate actual width and height of window when u resize the window;
 //using custom hooks;
